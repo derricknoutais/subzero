@@ -1,0 +1,20 @@
+{
+    "name" : "Subzero - Compteur de Ruptures",
+    "short_name" : "Subzero",
+    "icons" : [
+        {
+            "src" : "/images/icons/app-icon-256x256.png",
+            "type" : "image/png",
+            "sizes" : "256x256"
+        }
+    ],
+    "start_url": "/",
+    "scope" : ".",
+    "display": "standalone",
+    "orientation" : "portrait-primary",
+    "background_color" : "#fff",
+    "theme_color" : "#3F51B5",
+    "description": "Une application qui permet de compter les ruptures sur Vend",
+    "dir": "ltr",
+    "lang": "en-US"
+}
