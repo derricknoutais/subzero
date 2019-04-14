@@ -5441,6 +5441,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['products', 'subs'],
   data: function data() {
     return {
+      dummyInput: null,
       selected_sub: null,
       test: ['yo', 'ya'],
       prod: [''],
@@ -5451,7 +5452,15 @@ __webpack_require__.r(__webpack_exports__);
       iterations: 0
     };
   },
+  watch: {
+    dummyInput: function dummyInput() {
+      this.query(this.dummyInput);
+    }
+  },
   methods: {
+    addValue: function addValue() {
+      this.query(this.dummyInput);
+    },
     query: function query(quer) {
       var _this = this;
 

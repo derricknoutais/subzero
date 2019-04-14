@@ -5,6 +5,7 @@ export default {
     props: ['products', 'subs'],
     data(){
         return {
+            dummyInput: null,
             selected_sub: null,
             test : ['yo', 'ya'],
             prod: [''],
@@ -15,7 +16,15 @@ export default {
             iterations: 0
         }
     },
+    watch : {
+        dummyInput(){
+            this.query(this.dummyInput)
+        }   
+    },
     methods:{
+        addValue(){
+            this.query(this.dummyInput)
+        },
         query(quer){
             this.isLoading = true;
             clearTimeout(this.timer)
