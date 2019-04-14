@@ -6,6 +6,7 @@
         <div class='container'>
             <div class="row">
                 <div class="col-9">
+                    <input class="form-control">
                     <multiselect 
                         v-model="selected_sub" :options="this.prod" label="name" @search-change="query" :loading="isLoading" 
                         :multiple="true" :searchable="true"  :internal-search="false" :clear-on-select="false" :close-on-select="false" 
