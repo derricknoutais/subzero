@@ -9,7 +9,7 @@
                     <input class="form-control" v-model="dummyInput">
                     <multiselect 
                         v-model="selected_sub" :options="this.prod" label="name" @search-change="query" :loading="isLoading" 
-                        :multiple="true" :searchable="true"  :internal-search="false" :clear-on-select="false" :close-on-select="false" 
+                        :multiple="false" :searchable="true"  :internal-search="false" :clear-on-select="false" :close-on-select="false" 
                         :options-limit="300" :limit="3" :limit-text="limitText" :max-height="600" :show-no-results="false" :hide-selected="true"
                         :block-keys="['Tab', 'Enter']"
                     >
