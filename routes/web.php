@@ -11,9 +11,7 @@ use GuzzleHttp\Client;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SubController@create');
 
 Auth::routes();
 
