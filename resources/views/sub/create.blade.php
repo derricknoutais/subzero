@@ -11,7 +11,7 @@
                         v-model="selected_sub" :options="this.prod" label="name" @search-change="query" :loading="isLoading" 
                         :multiple="true" :searchable="true"  :internal-search="false" :clear-on-select="false" :close-on-select="false" 
                         :options-limit="300" :max-height="600" :show-no-results="false" :hide-selected="true"
-                        block-keys="['Tab', 'Enter']"
+                        
                     >
                     </multiselect>
                 </div>
