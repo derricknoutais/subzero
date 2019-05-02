@@ -5449,7 +5449,8 @@ __webpack_require__.r(__webpack_exports__);
       timer: null,
       interval: null,
       mySubs: {},
-      iterations: 0
+      iterations: 0,
+      isCreating: false
     };
   },
   watch: {
@@ -5495,9 +5496,11 @@ __webpack_require__.r(__webpack_exports__);
     addSub: function addSub() {
       var _this2 = this;
 
+      this.isCreating = true;
       axios.post('/sub/store', this.selected_sub).then(function (response) {
         _this2.interval = setInterval(_this2.alertSucces, 3000 / _this2.selected_sub.length);
         setTimeout(function () {
+          _this2.isCreating = false;
           window.location.reload();
         }, 6000);
       })["catch"](function (error) {

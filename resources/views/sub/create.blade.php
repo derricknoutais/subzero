@@ -16,7 +16,7 @@
                     </multiselect>
                 </div>
                 <div class="col-3">
-                    <button type="button" class="btn btn-success mt-1" @click="addSub">Ajouter un Sub</button>
+                    <button type="button" class="btn btn-success mt-1" @click="addSub" v-if=" ! isCreating">Ajouter un Sub</button>
                 </div>
             </div>
             <h1 class="text-left mt-5">Mes Subs</h1>

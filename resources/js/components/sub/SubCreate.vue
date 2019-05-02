@@ -13,7 +13,8 @@ export default {
             timer: null,
             interval: null,
             mySubs: {},
-            iterations: 0
+            iterations: 0,
+            isCreating: false
         }
     },
     watch : {
@@ -52,12 +53,15 @@ export default {
             }
         },
         addSub(){
+            this.isCreating = true;
             axios.post('/sub/store', this.selected_sub).then(response => {
 
                 this.interval = setInterval(this.alertSucces, 3000/this.selected_sub.length);
 
                 setTimeout(() => {
+                    this.isCreating = false;
                     window.location.reload()
+
                 }, 6000);
                 
             }).catch(error => {
