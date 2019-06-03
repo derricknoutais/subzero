@@ -54,15 +54,14 @@ export default {
         },
         addSub(){
             this.isCreating = true;
-            axios.post('/sub/store', this.selected_sub).then(response => {
-
-                this.interval = setInterval(this.alertSucces, 3000/this.selected_sub.length);
+            axios.post('/sub/store', this.selected_sub).then( response => {
+                
+                this.interval = setTimeout(this.alertSucces, 1000);
 
                 setTimeout(() => {
                     this.isCreating = false;
                     window.location.reload()
-
-                }, 6000);
+                }, 1000);
                 
             }).catch(error => {
                 console.log(error);
@@ -70,6 +69,13 @@ export default {
         }
     },
     created(){
+        axios.get('/produits').then(response => {
+            this.prod = response.data;
+            // console.log(response.data);
+            
+        }).catch(error => {
+            console.log(error);
+        });
         this.mySubs = this.subs
         
     }

@@ -15,7 +15,9 @@ class SubController extends Controller
      */
     public function index()
     {
-        $subs = Sub::all()->groupBy('product_id')->toArray();
+        $subs = Sub::with('produit')->get();
+        
+        return $subs = Sub::with('produit')->get();
         return view('sub.index', compact('subs'));
     }
     public function apiIndex()
@@ -54,13 +56,13 @@ class SubController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        foreach ($request->all() as $req) {
+        // foreach ($request->all() as $req) {
             Sub::create([
-                'product_id' => $req['id'],
+                'product_id' => $request->id,
                 'quantité' => 1,
-                'nom' => $req['name']
+                'nom' => $request->name
             ]);
-        }
+        // }
         
     }
 

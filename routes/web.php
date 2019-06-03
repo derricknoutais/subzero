@@ -1,5 +1,8 @@
 <?php
 use GuzzleHttp\Client;
+use App\Produit;
+use App\Sub;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,18 +52,59 @@ Route::get('/api/produits/{sku}', function ($sku) {
     return $products['products'];
 });
 
-Route::get( '/api/produits/{handle}', function ( $handle) {
+Route::get('/api/produits', function () {
 
     $client = new Client();
     $headers = [
         "Authorization" => "Bearer CjOC4V9CKof2GyEEdPE0Y_E4t742kylC76bxK7oX",
         'Accept'        => 'application/json',
     ];
+
+    // $response = $client->request('GET', 'https://stapog.vendhq.com/api/products?page_size=200' , ['headers' => $headers]);
+    // $data = (string)$response->getBody();
+    // $products = json_decode($data, true);
+    // return $products['pagination']['pages'];
+
+    $toDB = array();
+
+    for ($j=13; $j <= 16 ; $j++) { 
+        
+        $response = $client->request('GET', 'https://stapog.vendhq.com/api/products?page_size=200&page=' . $j , ['headers' => $headers]);
+        $data = json_decode( (string)$response->getBody(), true );
+        $products = $data['products'];
+        
+        foreach($products as $product){
+            if( ! Produit::where('product_id', $product['id'])->first() ){
+                Produit::create([
+                    'product_id' => $product['id'],
+                    'handle' => $product['handle'],
+                    'name' => $product['name'],
+                    'sku' => $product['sku'],
+                    'price' => $product['price'],
+                    'supply_price' => $product['supply_price']
+                ]);
+            }
+        }
+        
+        
+        
+    }
     
-    $response = $client->request('GET', 'https://stapog.vendhq.com/api/products?handle=' . $handle, ['headers' => $headers]);
-    $data = (string)$response->getBody();
+    // return $totalProducts;
+});
+
+Route::get('/api/produits/handle/{handle}', function($handle){
+
+    $client = new Client();
+    $headers = [
+        "Authorization" => "Bearer CjOC4V9CKof2GyEEdPE0Y_E4t742kylC76bxK7oX",
+        'Accept'        => 'application/json',
+    ];
+
+    $response = $client->request('GET', 'https://stapog.vendhq.com/api/products?handle=' . $handle , ['headers' => $headers]);
+    return $data = (string)$response->getBody();
     $products = json_decode($data, true);
-    return $products['products'];
+    return $products;
 });
 
 Route::get('/store', function(){
@@ -82,4 +126,20 @@ Route::get('/store', function(){
     return $response;
     $products = json_decode($data, true);
     return $products['products'];
+});
+
+Route::get('/produits', function(){
+    return Produit::all();
+});
+
+Route::get('/reporting', function(){
+    $subs =  Sub::with('produit')->get();
+
+    // $subs = Sub::all()->groupBy('product_id');
+    $total = 0;
+    foreach($subs as $sub){
+        $total += $sub->produit->price;
+    }
+
+   return view('reporting.index', compact('subs', 'total'));
 });

@@ -8,10 +8,7 @@
                 <div class="col-9">
                     <input class="form-control" v-model="dummyInput">
                     <multiselect 
-                        v-model="selected_sub" :options="this.prod" label="name" @search-change="query" :loading="isLoading" 
-                        :multiple="true" :searchable="true"  :internal-search="false" :clear-on-select="false" :close-on-select="false" 
-                        :options-limit="300" :max-height="600" :show-no-results="false" :hide-selected="true"
-                        
+                        v-model="selected_sub" :options="this.prod" label="name"
                     >
                     </multiselect>
                 </div>

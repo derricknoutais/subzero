@@ -26,7 +26,6 @@ export default {
         
         this.subzeros = this.subs
         var subs = (Object.values(this.subzeros));
-
         
         subs.forEach( sub => {
             var total = 0;
