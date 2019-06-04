@@ -58,7 +58,7 @@ class SubController extends Controller
         // return $request->all();
         // foreach ($request->all() as $req) {
             Sub::create([
-                'product_id' => $request->id,
+                'product_id' => $request->product_id,
                 'quantité' => 1,
                 'nom' => $request->name
             ]);

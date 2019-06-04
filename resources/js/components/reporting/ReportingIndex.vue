@@ -13,7 +13,10 @@ export default {
         montantTotal(){
             var total = 0;
             this.localSubs.forEach( element => {
-                total += element.produit.price
+                if(element.produit){
+                    total += element.produit.price
+                }
+                
             });
             return total;
         }

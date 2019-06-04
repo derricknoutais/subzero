@@ -5449,7 +5449,9 @@ __webpack_require__.r(__webpack_exports__);
     montantTotal: function montantTotal() {
       var total = 0;
       this.localSubs.forEach(function (element) {
-        total += element.produit.price;
+        if (element.produit) {
+          total += element.produit.price;
+        }
       });
       return total;
     }
