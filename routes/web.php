@@ -133,7 +133,7 @@ Route::get('/produits', function(){
 });
 
 Route::get('/reporting', function(){
-    $subs =  Sub::with('produit')->get();
+    return $subs =  Sub::with('produit')->get();
 
     // $subs = Sub::all()->groupBy('product_id');
     $total = 0;
