@@ -23,6 +23,7 @@ export default {
     },
     watch : {
         dateDu(){
+            
             if(this.dateAu === ''){
                 this.localSubs = this.subs.filter( each => {
                     return ( Date.parse(this.dateDu) < Date.parse(each.created_at)  )
@@ -31,6 +32,15 @@ export default {
                 this.localSubs = this.subs.filter( each => {
                     return ( Date.parse(this.dateDu) < Date.parse(each.created_at) &&  Date.parse(this.dateAu) > Date.parse(each.created_at) )
                 })
+                if(this.dateDu === ''){
+                    this.localSubs = this.subs.filter( each => {
+                        return ( Date.parse(this.dateAu) > Date.parse(each.created_at)  )
+                    })
+                }
+            }
+
+            if(this.dateDu === '' && this.dateAu === ''){
+                this.localSubs = this.subs
             }
         },
         dateAu(){
@@ -42,6 +52,14 @@ export default {
                 this.localSubs = this.subs.filter( each => {
                     return ( Date.parse(this.dateDu) < Date.parse(each.created_at) &&  Date.parse(this.dateAu) > Date.parse(each.created_at) )
                 })
+                if(this.dateAu === ''){
+                    this.localSubs = this.subs.filter( each => {
+                        return ( Date.parse(this.dateDu) < Date.parse(each.created_at)  )
+                    })
+                }
+            }
+            if(this.dateDu === '' && this.dateAu === ''){
+                this.localSubs = this.subs
             }
         },
     },

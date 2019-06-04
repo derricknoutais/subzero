@@ -5468,6 +5468,16 @@ __webpack_require__.r(__webpack_exports__);
         this.localSubs = this.subs.filter(function (each) {
           return Date.parse(_this.dateDu) < Date.parse(each.created_at) && Date.parse(_this.dateAu) > Date.parse(each.created_at);
         });
+
+        if (this.dateDu === '') {
+          this.localSubs = this.subs.filter(function (each) {
+            return Date.parse(_this.dateAu) > Date.parse(each.created_at);
+          });
+        }
+      }
+
+      if (this.dateDu === '' && this.dateAu === '') {
+        this.localSubs = this.subs;
       }
     },
     dateAu: function dateAu() {
@@ -5481,6 +5491,16 @@ __webpack_require__.r(__webpack_exports__);
         this.localSubs = this.subs.filter(function (each) {
           return Date.parse(_this2.dateDu) < Date.parse(each.created_at) && Date.parse(_this2.dateAu) > Date.parse(each.created_at);
         });
+
+        if (this.dateAu === '') {
+          this.localSubs = this.subs.filter(function (each) {
+            return Date.parse(_this2.dateDu) < Date.parse(each.created_at);
+          });
+        }
+      }
+
+      if (this.dateDu === '' && this.dateAu === '') {
+        this.localSubs = this.subs;
       }
     }
   },
