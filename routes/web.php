@@ -133,12 +133,15 @@ Route::get('/produits', function(){
 });
 
 Route::get('/reporting', function(){
-    return $subs =  Sub::with('produit')->get();
+    $subs =  Sub::with('produit')->get();
 
     // $subs = Sub::all()->groupBy('product_id');
     $total = 0;
     foreach($subs as $sub){
-        $total += $sub->produit->price;
+        if( isset( $sub->produit )){
+            $total += $sub->produit->price;
+        }
+        
     }
 
    return view('reporting.index', compact('subs', 'total'));
