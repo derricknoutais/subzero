@@ -49,7 +49,12 @@
                                 <i class="far fa-chart-bar"></i>
                                 Reporting
                             </a>
-                            
+                        </li>
+                        <li class="nav-item  mx-3">
+                            <a href="/tagla" class="text-primary">
+                                <i class="fas fa-tag    "></i>
+                                Tagla
+                            </a>
                         </li>
                     </ul>
 

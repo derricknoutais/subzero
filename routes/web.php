@@ -146,3 +146,8 @@ Route::get('/reporting', function(){
 
    return view('reporting.index', compact('subs', 'total'));
 });
+
+Route::get('/tagla', function(){
+    $subs =  Sub::with('produit')->get();
+    return view('tagla.index', compact('subs'));
+});

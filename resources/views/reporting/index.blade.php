@@ -43,7 +43,6 @@
                 </div>
             </div>
         </div>
-        
     </reporting-index>
     
 @endsection
