@@ -1,4 +1,8 @@
 
+@import '~tailwindcss/base';
+@import '~tailwindcss/components';
+@import "~tailwindcss/utilities";
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
@@ -13,6 +17,12 @@
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+
+
+
+
+
 
 .navbar-laravel {
   background-color: #fff;

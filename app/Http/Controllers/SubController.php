@@ -16,14 +16,17 @@ class SubController extends Controller
     public function index()
     {
         $subs = Sub::with('produit')->get();
-        
+
         return $subs = Sub::with('produit')->get();
         return view('sub.index', compact('subs'));
     }
     public function apiIndex()
     {
         return $subs = Sub::all()->groupBy('product_id')->toArray();
+    }
 
+    public function apiShow($product){
+        return $subs = Sub::where('product_id', $product)->whereDate('created_at', '>=', '2019-04-01')->sum('quantité');
     }
 
     /**
@@ -44,7 +47,7 @@ class SubController extends Controller
         // $products = json_decode($data, true);
         $subs = Sub::all()->groupBy('product_id')->toArray();
         // $products = $products['data'];
-        return view('sub.create', compact('products', 'subs'));
+        return view('sub.create', compact('subs'));
     }
 
     /**
@@ -63,7 +66,7 @@ class SubController extends Controller
                 'nom' => $request->name
             ]);
         // }
-        
+
     }
 
     /**

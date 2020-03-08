@@ -2,11 +2,15 @@ require('./bootstrap');
 
 import Multiselect from 'vue-multiselect'
 import VueAlertify from 'vue-alertify';
-import VueCurrencyFilter from 'vue-currency-filter'
+import VueCurrencyFilter from 'vue-currency-filter';
+import VueBarcode from 'vue-barcode';
+
+
 
 
 window.Vue = require('vue');
 Vue.component('multiselect', Multiselect)
+Vue.component('barcode', VueBarcode);
 Vue.use(VueAlertify, {
     notifier : {
             delay: 2,
@@ -33,5 +37,5 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

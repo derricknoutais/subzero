@@ -27,7 +27,9 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.2",
+        "tailwindcss": "^1.1.3",
         "vue-alertify": "^1.1.0",
+        "vue-barcode": "^1.2.0",
         "vue-currency-filter": "^3.4.2",
         "vue-multiselect": "^2.1.4"
     }

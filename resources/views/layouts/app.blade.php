@@ -56,6 +56,12 @@
                                 Tagla
                             </a>
                         </li>
+                        <li class="nav-item  mx-3">
+                            <a href="/barcode" class="text-primary">
+                                <i class="fas fa-tag    "></i>
+                                Barcode
+                            </a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
