@@ -27,6 +27,7 @@ class SubController extends Controller
 
     public function apiShow($product, $apres = null, $avant = null)
     {
+        return $product;
         if($apres && $avant){
             return $subs = Sub::where('product_id', $product)->whereDate('created_at', '>=', $apres)->whereDate('created_at', '<=', $avant)->sum('quantité');
         } else if(! $apres && $avant){
