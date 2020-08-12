@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/sub', 'SubController@index');
 Route::get('/api/sub', 'SubController@apiIndex');
-Route::get('/api/sub/{product}', 'SubController@apiShow');
+Route::get('/api/sub/{product}/{apres?}/{avant?}', 'SubController@apiShow');
 Route::get('/sub/create', 'SubController@create');
 Route::post('/sub/store', 'SubController@store');
 

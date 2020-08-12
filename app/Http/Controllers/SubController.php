@@ -25,8 +25,17 @@ class SubController extends Controller
         return $subs = Sub::all()->groupBy('product_id')->toArray();
     }
 
-    public function apiShow($product){
-        return $subs = Sub::where('product_id', $product)->whereDate('created_at', '>=', '2019-04-01')->sum('quantité');
+    public function apiShow($product, $apres = null, $avant = null)
+    {
+        if($apres && $avant){
+            return $subs = Sub::where('product_id', $product)->whereDate('created_at', '>=', $apres)->whereDate('created_at', '<=', $avant)->sum('quantité');
+        } else if(! $apres && $avant){
+            return $subs = Sub::where('product_id', $product)->whereDate('created_at', '<=', $avant)->sum('quantité');
+        } else if($apres && ! $avant){
+            return $subs = Sub::where('product_id', $product)->whereDate('created_at', '>=', $apres)->sum('quantité');
+        } else {
+            return $subs = Sub::where('product_id', $product)->sum('quantité');
+        }
     }
 
     /**
